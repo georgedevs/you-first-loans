@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import { toast, Toaster } from 'sonner';
 
 function LoanCalculator() {
   const [principal, setPrincipal] = useState('');
@@ -15,7 +16,9 @@ function LoanCalculator() {
 
   const calculateLoan = () => {
     if (!principal || !duration) {
-      alert('Please fill all fields');
+      toast.error('Please fill all fields', {
+        position: 'top-center',
+      });
       return;
     }
 
@@ -28,10 +31,13 @@ function LoanCalculator() {
       const durationValue = parseInt(duration);
       
       if (isNaN(principalValue) || isNaN(interestRateValue) || isNaN(durationValue)) {
-        alert('Please enter valid numbers');
+        toast.error('Please enter valid numbers', {
+          position: 'top-center',
+        });
         setIsLoading(false);
         return;
       }
+      
       
       const monthlyPrincipal = Math.floor(principalValue / durationValue); // No decimals
       let remainingPrincipal = principalValue;
@@ -62,6 +68,11 @@ function LoanCalculator() {
       setTotalAmount(principalValue + totalInterestSum);
       setIsLoading(false);
       
+      toast.success('Loan calculation completed!', {
+        position: 'top-center',
+      });
+      
+
       // Scroll to results
       setTimeout(() => {
         if (tableRef.current) {
@@ -79,9 +90,11 @@ function LoanCalculator() {
     // Get only the table section, not the summary cards
     const tableSection = document.querySelector('.overflow-x-auto.rounded-xl');
     
-    if (!tableSection) {
+     if (!tableSection) {
       setIsLoading(false);
-      alert('Could not find table to export');
+      toast.error('Could not find table to export', {
+        position: 'top-center',
+      });
       return;
     }
     
@@ -144,7 +157,9 @@ function LoanCalculator() {
     
     if (!tableSection) {
       setIsLoading(false);
-      alert('Could not find table to export');
+      toast.error('Could not find table to export', {
+        position: 'top-center',
+      });
       return;
     }
     
@@ -201,6 +216,10 @@ function LoanCalculator() {
       
       // Clean up
       document.body.removeChild(wrapper);
+
+      toast.success('PDF downloaded successfully!', {
+        position: 'top-center',
+      });
       
       setIsLoading(false);
     });
@@ -208,6 +227,7 @@ function LoanCalculator() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 font-['Poppins',sans-serif]">
+      <Toaster richColors position="top-center"  />
       <div className="bg-white shadow-2xl rounded-xl overflow-hidden border border-gray-100">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 p-8 relative overflow-hidden">
