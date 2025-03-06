@@ -12,7 +12,6 @@ function LoanCalculator() {
   const [totalAmount, setTotalAmount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const tableRef = useRef(null);
-  const resultsRef = useRef(null);
 
   const calculateLoan = () => {
     if (!principal || !duration) {
@@ -72,126 +71,6 @@ function LoanCalculator() {
     }, 800);
   };
 
-  // Prepare elements for printing by adding print-friendly classes
-  const prepareForPrinting = (printMode = true) => {
-    const resultSection = document.getElementById('results-section');
-    const originalStyles = {};
-    
-    // Store original classes to restore later
-    if (printMode) {
-      // Convert colorful cards to black and white
-      const cards = resultSection.querySelectorAll('.bg-gradient-to-br');
-      cards.forEach((card, index) => {
-        originalStyles[`card-${index}`] = card.className;
-        card.className = 'bg-white p-6 rounded-xl shadow-md border border-gray-400 print-friendly';
-      });
-      
-      // Convert headers
-      const headers = resultSection.querySelectorAll('th');
-      headers.forEach((header, index) => {
-        originalStyles[`header-${index}`] = header.className;
-        header.className = 'px-6 py-4 bg-gray-800 text-xs font-medium text-white uppercase tracking-wider ' + 
-          (header.className.includes('text-right') ? 'text-right' : 'text-left');
-      });
-      
-      // Convert info box
-      const infoBox = resultSection.querySelector('.bg-blue-50');
-      if (infoBox) {
-        originalStyles['info-box'] = infoBox.className;
-        infoBox.className = 'mt-8 p-6 bg-gray-100 rounded-xl border border-gray-300';
-      }
-      
-      // Convert icons - SVG elements don't have className, they have classList or attributes
-      const iconContainers = resultSection.querySelectorAll('svg');
-      iconContainers.forEach((icon, index) => {
-        if (icon.getAttribute('class')) {
-          originalStyles[`icon-${index}`] = icon.getAttribute('class');
-          let newClass = icon.getAttribute('class');
-          // Replace any text-color classes with text-gray-700
-          if (newClass.includes('text-')) {
-            newClass = newClass.split(' ')
-              .map(cls => cls.startsWith('text-') && !cls.includes('text-gray-700') ? 'text-gray-700' : cls)
-              .join(' ');
-          }
-          icon.setAttribute('class', newClass);
-        }
-        
-        if (icon.parentElement && 
-            icon.parentElement.className && 
-            icon.parentElement.className.includes('rounded-full')) {
-          originalStyles[`icon-parent-${index}`] = icon.parentElement.className;
-          icon.parentElement.className = 'p-2 bg-gray-200 rounded-full mr-4';
-        }
-      });
-      
-      // Convert colored text
-      const coloredTexts = resultSection.querySelectorAll('[class*="text-blue-"], [class*="text-purple-"], [class*="text-indigo-"]');
-      coloredTexts.forEach((text, index) => {
-        if (text.className && !text.classList.contains('print-friendly')) {
-          originalStyles[`text-${index}`] = text.className;
-          // Replace text color classes with text-gray-800
-          let newClass = text.className;
-          newClass = newClass.split(' ')
-            .map(cls => {
-              if (cls.startsWith('text-blue-') || 
-                  cls.startsWith('text-purple-') || 
-                  cls.startsWith('text-indigo-')) {
-                return 'text-gray-800';
-              }
-              return cls;
-            })
-            .join(' ');
-          text.className = newClass;
-        }
-      });
-    }
-    
-    return () => {
-      // Restore original styles
-      if (printMode) {
-        // Restore cards
-        const cards = resultSection.querySelectorAll('.print-friendly');
-        cards.forEach((card, index) => {
-          if (originalStyles[`card-${index}`]) {
-            card.className = originalStyles[`card-${index}`];
-          }
-        });
-        
-        // Restore headers
-        const headers = resultSection.querySelectorAll('th');
-        headers.forEach((header, index) => {
-          if (originalStyles[`header-${index}`]) {
-            header.className = originalStyles[`header-${index}`];
-          }
-        });
-        
-        // Restore info box
-        const infoBox = resultSection.querySelector('.bg-gray-100');
-        if (infoBox && originalStyles['info-box']) {
-          infoBox.className = originalStyles['info-box'];
-        }
-        
-        // Restore icons
-        const icons = resultSection.querySelectorAll('svg');
-        icons.forEach((icon, index) => {
-          if (originalStyles[`icon-${index}`]) {
-            icon.setAttribute('class', originalStyles[`icon-${index}`]);
-          }
-          if (icon.parentElement && originalStyles[`icon-parent-${index}`]) {
-            icon.parentElement.className = originalStyles[`icon-parent-${index}`];
-          }
-        });
-        
-        // Restore colored texts
-        const coloredTexts = resultSection.querySelectorAll('[class*="text-gray-800"]');
-        coloredTexts.forEach((text, index) => {
-          if (originalStyles[`text-${index}`]) {
-            text.className = originalStyles[`text-${index}`];
-          }
-        });
-      }
-    };
-  };
 
   const handleDownloadImage = () => {
     // Show loading state
@@ -332,11 +211,27 @@ function LoanCalculator() {
       <div className="bg-white shadow-2xl rounded-xl overflow-hidden border border-gray-100">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 p-8 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full opacity-10">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-full h-full text-white">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 flex items-center justify-center">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-full h-full text-white"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="9" />
+    <line x1="8" y1="7" x2="8" y2="17" />
+    <line x1="16" y1="7" x2="16" y2="17" />
+    <line x1="7" y1="10.5" x2="17" y2="10.5" />
+    <line x1="7" y1="13.5" x2="17" y2="13.5" />
+    <line x1="8" y1="7" x2="16" y2="17" />
+  </svg>
+</div>
+
+
           <div className="relative z-10">
             <h1 className="text-4xl font-extrabold text-white mb-3 tracking-tight">You-First Loans</h1>
             <h2 className="text-xl font-medium text-blue-100 max-w-xl leading-relaxed">Professional Reducing Balance Loan Calculator</h2>
