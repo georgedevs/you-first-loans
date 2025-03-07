@@ -16,7 +16,7 @@ const LoadingAnimation = () => {
       <div className="relative">
         {/* Backdrop blur pulse effect */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-32 h-32 bg-blue-400 rounded-full opacity-20 animate-ping"></div>
+          <div className="w-32 h-32 bg-orange-400 rounded-full opacity-20 animate-ping"></div>
         </div>
         
         {/* Logo container with zoom animation */}
@@ -25,7 +25,7 @@ const LoadingAnimation = () => {
           <div className="flex items-center space-x-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12 text-blue-200 animate-pulse"
+              className="h-12 w-12 text-orange-400 animate-pulse"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -45,11 +45,11 @@ const LoadingAnimation = () => {
           
           {/* Loading text */}
           <div className="mt-8 flex items-center space-x-2">
-            <div className="text-blue-200 text-lg">Loading</div>
+            <div className="text-orange-50 text-lg">Loading</div>
             <div className="flex space-x-1">
-              <div className="w-2 h-2 bg-blue-200 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-              <div className="w-2 h-2 bg-blue-200 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-              <div className="w-2 h-2 bg-blue-200 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+              <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+              <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+              <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
             </div>
           </div>
         </div>

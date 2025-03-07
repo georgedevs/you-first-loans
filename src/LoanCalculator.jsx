@@ -231,30 +231,32 @@ function LoanCalculator() {
       <div className="bg-white shadow-2xl rounded-xl overflow-hidden border border-gray-100">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 p-8 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 flex items-center justify-center">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-full h-full text-white"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="9" />
-    <line x1="8" y1="7" x2="8" y2="17" />
-    <line x1="16" y1="7" x2="16" y2="17" />
-    <line x1="7" y1="10.5" x2="17" y2="10.5" />
-    <line x1="7" y1="13.5" x2="17" y2="13.5" />
-    <line x1="8" y1="7" x2="16" y2="17" />
-  </svg>
-</div>
-
+          <div className="absolute top-0 left-0 w-full h-full opacity-10 flex items-center justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-full h-full text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <line x1="8" y1="7" x2="8" y2="17" />
+              <line x1="16" y1="7" x2="16" y2="17" />
+              <line x1="7" y1="10.5" x2="17" y2="10.5" />
+              <line x1="7" y1="13.5" x2="17" y2="13.5" />
+              <line x1="8" y1="7" x2="16" y2="17" />
+            </svg>
+          </div>
 
           <div className="relative z-10">
-            <h1 className="text-4xl font-extrabold text-white mb-3 tracking-tight">You-First Loans</h1>
-            <h2 className="text-xl font-medium text-blue-100 max-w-xl leading-relaxed">Professional Reducing Balance Loan Calculator</h2>
+            <div className="flex items-center">
+              <h1 className="text-4xl font-extrabold text-white mb-3 tracking-tight">You-First Loans</h1>
+              <div className="ml-4 px-3 py-1 bg-orange-500 text-white text-xs font-bold uppercase rounded-full">Calculator</div>
+            </div>
+            <h2 className="text-xl font-medium text-orange-300 max-w-xl leading-relaxed">Professional Reducing Balance Loan Calculator</h2>
             <div className="mt-6 bg-white/10 inline-block px-4 py-2 rounded-lg backdrop-blur-sm">
               <p className="text-blue-50 text-sm">Calculate your loans with our reducing balance method for fair and transparent interest rates</p>
             </div>
@@ -262,12 +264,15 @@ function LoanCalculator() {
         </div>
         
         {/* Calculator Form */}
-        <div className="p-8 bg-gray-50">
-          <h3 className="text-xl font-bold text-gray-800 mb-6">Enter Loan Information</h3>
+        <div className="p-8 bg-gradient-to-b from-gray-50 to-white">
+          <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+            <span className="inline-block w-8 h-8 bg-orange-500 rounded-full mr-3 flex items-center justify-center text-white">1</span>
+            Enter Loan Information
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 transition-transform hover:shadow-lg hover:-translate-y-1">
+            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group">
               <div className="flex items-center mb-4">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-100 text-blue-700 mr-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-orange-100 text-orange-600 mr-3 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
@@ -278,10 +283,10 @@ function LoanCalculator() {
               </div>
               <div className="relative mt-1">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-gray-500">₦</span>
+                  <span className="text-gray-500 naira-symbol">₦</span>
                 </div>
                 <input
-                  className="block w-full pl-10 pr-12 py-3 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="block w-full pl-10 pr-12 py-3 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors"
                   id="principal"
                   type="number"
                   placeholder="e.g. 500000"
@@ -295,36 +300,50 @@ function LoanCalculator() {
               <p className="mt-2 text-sm text-gray-500">Enter the total loan amount</p>
             </div>
             
-            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 transition-transform hover:shadow-lg hover:-translate-y-1">
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-100 text-blue-700 mr-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <label className="block text-gray-700 font-bold" htmlFor="interestRate">
-                  Interest Rate
-                </label>
-              </div>
-              <div className="relative mt-1">
-                <input
-                  className="block w-full pl-3 pr-12 py-3 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  id="interestRate"
-                  type="number"
-                  placeholder="e.g. 10"
-                  value={interestRate}
-                  onChange={(e) => setInterestRate(e.target.value)}
-                />
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                  <span className="text-gray-400">%</span>
-                </div>
-              </div>
-              <p className="mt-2 text-sm text-gray-500">Enter the monthly interest rate</p>
-            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group">
+  <div className="flex items-center mb-4">
+    <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-100 text-blue-700 mr-3 group-hover:bg-blue-700 group-hover:text-white transition-colors duration-300">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="9" />
+        <line x1="8" y1="7" x2="8" y2="17" />
+        <line x1="16" y1="7" x2="16" y2="17" />
+        <line x1="7" y1="10.5" x2="17" y2="10.5" />
+        <line x1="7" y1="13.5" x2="17" y2="13.5" />
+        <line x1="8" y1="7" x2="16" y2="17" />
+      </svg>
+    </div>
+    <label className="block text-gray-700 font-bold" htmlFor="interestRate">
+      Interest Rate
+    </label>
+  </div>
+  <div className="relative mt-1">
+    <input
+      className="block w-full pl-3 pr-12 py-3 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+      id="interestRate"
+      type="number"
+      placeholder="e.g. 10"
+      value={interestRate}
+      onChange={(e) => setInterestRate(e.target.value)}
+    />
+    <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+      <span className="text-gray-400">%</span>
+    </div>
+  </div>
+  <p className="mt-2 text-sm text-gray-500">Enter the monthly interest rate</p>
+</div>
             
-            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 transition-transform hover:shadow-lg hover:-translate-y-1">
+            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group">
               <div className="flex items-center mb-4">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-100 text-blue-700 mr-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center bg-orange-100 text-orange-600 mr-3 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
@@ -335,7 +354,7 @@ function LoanCalculator() {
               </div>
               <div className="relative mt-1">
                 <input
-                  className="block w-full pl-3 pr-16 py-3 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="block w-full pl-3 pr-16 py-3 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors"
                   id="duration"
                   type="number"
                   placeholder="e.g. 6"
@@ -350,40 +369,46 @@ function LoanCalculator() {
             </div>
           </div>
           
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-10">
             <button
-              className={`bg-blue-700 text-white font-bold py-4 px-10 rounded-full focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg transition-all flex items-center ${
-                isLoading ? "opacity-75 cursor-not-allowed" : "hover:bg-blue-800 hover:shadow-xl hover:-translate-y-1"
+              className={`relative overflow-hidden bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold py-4 px-12 rounded-full focus:outline-none focus:ring-4 focus:ring-orange-300 shadow-lg transition-all ${
+                isLoading ? "opacity-75 cursor-not-allowed" : "hover:shadow-xl hover:-translate-y-1"
               }`}
               type="button"
               onClick={calculateLoan}
               disabled={isLoading}
             >
-              {isLoading ? (
-                <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Calculating...
-                </>
-              ) : (
-                <>
-                  Calculate Loan
-                  <svg className="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </>
-              )}
+              <span className="absolute inset-0 w-full h-full bg-white/30 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+              <span className="relative flex items-center">
+                {isLoading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Calculating...
+                  </>
+                ) : (
+                  <>
+                    Calculate Loan
+                    <svg className="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </>
+                )}
+              </span>
             </button>
           </div>
         </div>
         
         {/* Results */}
         {results.length > 0 && (
-          <div className="p-8 border-t border-gray-200" ref={tableRef} id="results-section">
+          <div className="p-8 border-t border-gray-200 bg-white" ref={tableRef} id="results-section">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4 md:mb-0">Payment Schedule</h3>
+              <h3 className="text-2xl font-bold text-gray-800 mb-4 md:mb-0 flex items-center">
+                <span className="inline-block w-8 h-8 bg-blue-700 rounded-full mr-3 flex items-center justify-center text-white">2</span>
+                Payment Schedule
+              </h3>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
                 <button
                   className="flex items-center justify-center bg-blue-700 hover:bg-blue-800 text-white font-medium py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-md transition-all hover:shadow-lg"
@@ -394,10 +419,10 @@ function LoanCalculator() {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
-                  Download Table as PDF
+                  Download PDF
                 </button>
                 <button
-                  className="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 shadow-md transition-all hover:shadow-lg"
+                  className="flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 shadow-md transition-all hover:shadow-lg"
                   type="button"
                   onClick={handleDownloadImage}
                   disabled={isLoading}
@@ -405,14 +430,14 @@ function LoanCalculator() {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
-                  Download Table as Image
+                  Download Image
                 </button>
               </div>
             </div>
             
             {/* Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md border border-blue-200">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md border border-blue-200 transition-transform hover:-translate-y-1 hover:shadow-lg duration-300">
                 <div className="flex justify-between items-start mb-4">
                   <h4 className="text-blue-800 font-bold">Total Principal</h4>
                   <div className="p-2 bg-blue-200 rounded-lg">
@@ -425,30 +450,46 @@ function LoanCalculator() {
                 <p className="text-sm text-blue-700 mt-1">Loan amount to be repaid</p>
               </div>
               
-              <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-xl shadow-md border border-indigo-200">
-                <div className="flex justify-between items-start mb-4">
-                  <h4 className="text-indigo-800 font-bold">Total Interest</h4>
-                  <div className="p-2 bg-indigo-200 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                </div>
-                <p className="text-3xl font-bold text-gray-800">₦{totalInterest.toLocaleString()}</p>
-                <p className="text-sm text-indigo-700 mt-1">Total interest applied</p>
-              </div>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl shadow-md border border-orange-200 transition-transform hover:-translate-y-1 hover:shadow-lg duration-300">
+  <div className="flex justify-between items-start mb-4">
+    <h4 className="text-orange-800 font-bold">Total Interest</h4>
+    <div className="p-2 bg-orange-200 rounded-lg">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6 text-orange-600"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="9" />
+        <line x1="8" y1="7" x2="8" y2="17" />
+        <line x1="16" y1="7" x2="16" y2="17" />
+        <line x1="7" y1="10.5" x2="17" y2="10.5" />
+        <line x1="7" y1="13.5" x2="17" y2="13.5" />
+        <line x1="8" y1="7" x2="16" y2="17" />
+      </svg>
+    </div>
+  </div>
+  <p className="text-3xl font-bold text-gray-800">₦{totalInterest.toLocaleString()}</p>
+  <p className="text-sm text-orange-700 mt-1">Total interest applied</p>
+</div>
               
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl shadow-md border border-purple-200">
+              <div className="bg-gradient-to-br from-blue-50 via-white to-orange-50 p-6 rounded-xl shadow-md border border-gray-200 transition-transform hover:-translate-y-1 hover:shadow-lg duration-300">
                 <div className="flex justify-between items-start mb-4">
-                  <h4 className="text-purple-800 font-bold">Total Amount</h4>
-                  <div className="p-2 bg-purple-200 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <h4 className="text-gray-800 font-bold">Total Amount</h4>
+                  <div className="p-2 bg-gradient-to-r from-blue-200 to-orange-200 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>
                   </div>
                 </div>
                 <p className="text-3xl font-bold text-gray-800">₦{totalAmount.toLocaleString()}</p>
-                <p className="text-sm text-purple-700 mt-1">Total payment amount</p>
+                <p className="text-sm text-gray-700 mt-1">Final amount to be repaid</p>
+                <div className="flex items-center mt-1">
+                </div>
               </div>
             </div>
             
@@ -457,19 +498,19 @@ function LoanCalculator() {
               <table className="min-w-full bg-white divide-y divide-gray-200">
                 <thead>
                   <tr>
-                    <th className="px-6 py-4 bg-blue-900 text-xs font-medium text-white uppercase tracking-wider text-left">
+                    <th className="px-6 py-4 bg-gradient-to-r from-blue-900 to-blue-800 text-xs font-medium text-white uppercase tracking-wider text-left">
                       Month
                     </th>
-                    <th className="px-6 py-4 bg-blue-900 text-xs font-medium text-white uppercase tracking-wider text-right">
+                    <th className="px-6 py-4 bg-gradient-to-r from-blue-900 to-blue-800 text-xs font-medium text-white uppercase tracking-wider text-right">
                       Principal (₦)
                     </th>
-                    <th className="px-6 py-4 bg-blue-900 text-xs font-medium text-white uppercase tracking-wider text-right">
+                    <th className="px-6 py-4 bg-gradient-to-r from-blue-900 to-blue-800 text-xs font-medium text-white uppercase tracking-wider text-right">
                       Interest (₦)
                     </th>
-                    <th className="px-6 py-4 bg-blue-900 text-xs font-medium text-white uppercase tracking-wider text-right">
+                    <th className="px-6 py-4 bg-gradient-to-r from-blue-900 to-blue-800 text-xs font-medium text-white uppercase tracking-wider text-right">
                       Amount (₦)
                     </th>
-                    <th className="px-6 py-4 bg-blue-900 text-xs font-medium text-white uppercase tracking-wider text-right">
+                    <th className="px-6 py-4 bg-gradient-to-r from-blue-900 to-blue-800 text-xs font-medium text-white uppercase tracking-wider text-right">
                       Remaining Principal (₦)
                     </th>
                   </tr>
@@ -478,7 +519,7 @@ function LoanCalculator() {
                   {results.map((result, index) => (
                     <tr 
                       key={result.month}
-                      className={`hover:bg-gray-50 transition-colors ${index % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
+                      className={`hover:bg-gray-50 transition-colors ${index % 2 === 0 ? "bg-white" : "bg-orange-50"}`}
                     >
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {result.month}
@@ -499,7 +540,7 @@ function LoanCalculator() {
                   ))}
                 </tbody>
                 <tfoot>
-                  <tr className="bg-blue-50">
+                  <tr className="bg-gradient-to-r from-blue-50 to-orange-50">
                     <th className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 text-left">
                       TOTAL
                     </th>
@@ -520,10 +561,10 @@ function LoanCalculator() {
               </table>
             </div>
             
-            <div className="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-200">
+            <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-orange-50 rounded-xl border border-blue-200">
               <div className="flex items-start">
-                <div className="p-2 bg-blue-100 rounded-full mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="p-2 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
